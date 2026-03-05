@@ -9,6 +9,10 @@
 #import "RSSFeed.h"
 #import "RSSItem.h"
 #import "RSSParser.h"
+#import "SSMainMenu.h"
+#import "SSAboutPanel.h"
+#import "SSWindowStyle.h"
+#import "SSConcurrency.h"
 
 @implementation AppDelegate
 
@@ -43,6 +47,9 @@
 - (void)buildMenu {
     SSMainMenu *menu = [[SSMainMenu alloc] init];
     [menu setAppName:@"SmallReSiever"];
+    [menu setAboutAppName:@"SmallReSiever"];
+    [menu setAboutVersion:@"1.0"];
+    [menu setAboutTarget:self];
     NSArray *menuItems = [NSArray arrayWithObjects:
         [SSMainMenuItem itemWithTitle:@"Add Feed…" action:@selector(addFeed:) keyEquivalent:@"o" modifierMask:NSCommandKeyMask target:self],
         [SSMainMenuItem itemWithTitle:@"Refresh" action:@selector(refreshFeed:) keyEquivalent:@"r" modifierMask:NSCommandKeyMask target:self],
@@ -51,6 +58,11 @@
 #if defined(GNUSTEP) && !__has_feature(objc_arc)
     [menu release];
 #endif
+}
+
+- (void)showAbout:(id)sender {
+    (void)sender;
+    [SSAboutPanel showWithAppName:@"SmallReSiever" version:@"1.0"];
 }
 
 - (void)buildWindow {

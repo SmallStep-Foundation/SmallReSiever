@@ -5,6 +5,9 @@ include $(GNUSTEP_MAKEFILES)/common.make
 
 APP_NAME = SmallReSiever
 
+before-all::
+	mkdir -p Resources && cp -f ../SmallStepLib/Resources/logo.png Resources/logo.png 2>/dev/null || true
+
 SmallReSiever_OBJC_FILES = \
 	App/main.m \
 	App/AppDelegate.m \
@@ -13,7 +16,7 @@ SmallReSiever_OBJC_FILES = \
 	RSS/RSSFeed.m \
 	RSS/RSSItem.m
 
-SmallReSiever_RESOURCE_FILES =
+SmallReSiever_RESOURCE_FILES = Resources/logo.png
 
 # Include paths for subdirectories (App/, RSS/, Compat/)
 ADDITIONAL_INCLUDE_DIRS += -I. -IApp -IRSS -ICompat
