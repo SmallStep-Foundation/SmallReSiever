@@ -11,7 +11,7 @@
 #import <AppKit/AppKit.h>
 #endif
 
-#import "SmallStepCompat.h"
+#import "SmallStep.h"
 
 @class RSSFeed;
 

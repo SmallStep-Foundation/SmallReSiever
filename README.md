@@ -1,6 +1,6 @@
 # SmallReSiever
 
-RSS reader for GNUStep using the [SmallStep](../SmallStep) API and [libxml2](https://gitlab.gnome.org/GNOME/libxml2) (FOSS).
+RSS reader for GNUStep using the [SmallStep](../SmallStepLib) API and [libxml2](https://gitlab.gnome.org/GNOME/libxml2) (FOSS).
 
 ## Project layout
 
@@ -14,9 +14,6 @@ SmallReSiever/
 │   ├── RSSFeed.h/m
 │   ├── RSSItem.h/m
 │   └── RSSParser.h/m
-├── Compat/           # SmallStep API compatibility (when SmallStep not linked)
-│   ├── SmallStepCompat.h
-│   └── SmallStepCompat.m
 ├── GNUmakefile
 ├── LICENSE
 └── README.md
@@ -32,7 +29,7 @@ RSS/Atom reading is implemented using:
 
 - **libxml2**: [https://gitlab.gnome.org/GNOME/libxml2](https://gitlab.gnome.org/GNOME/libxml2) — C library for parsing XML; used in `RSS/RSSParser.m` to parse feed XML and populate `RSSFeed` / `RSSItem`. No other third‑party RSS/XML libraries are used.
 
-The app also uses **GNUStep** (Base + GUI) for the desktop UI and, optionally, the **SmallStep** API (either from [../SmallStep](../SmallStep) or the bundled **Compat** implementation).
+The app also uses **GNUStep** (Base + GUI) for the desktop UI and the **SmallStep** API from [../SmallStepLib](../SmallStepLib) (app lifecycle, menus, about panel, window style, concurrency).
 
 ## Features
 
@@ -47,12 +44,13 @@ The app also uses **GNUStep** (Base + GUI) for the desktop UI and, optionally, t
 - **GNUStep** (Base + GUI): `gnustep-base`, `gnustep-gui`, `gnustep-make`
 - **libxml2**: `libxml2-dev` (or equivalent)
 
-SmallReSiever implements the SmallStep API locally (SmallStepCompat) so it runs without building SmallStep. If SmallStep is installed, you can link against it instead by adjusting the GNUmakefile.
+SmallReSiever links against the shared **SmallStep** framework from SmallStepLib (build it first).
 
 ## Build
 
 ```bash
-cd SmallReSiever
+cd ../SmallStepLib && make
+cd ../ReSiever
 . /usr/share/GNUstep/Makefiles/GNUstep.sh   # or your GNUSTEP.sh path
 make
 ```

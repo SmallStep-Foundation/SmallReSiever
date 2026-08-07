@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
 
-#import "SmallStepCompat.h"
+#import "SmallStep.h"
 #import "AppDelegate.h"
 
 int main(int argc, char **argv) {

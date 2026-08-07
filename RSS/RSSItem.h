@@ -28,3 +28,5 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *identifier;
 
 @end
+
+NS_ASSUME_NONNULL_END
